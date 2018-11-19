@@ -1,0 +1,20 @@
+{
+  "name": "js-enumify",
+  "version": "0.0.0",
+  "description": "Enum lib",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pgalias/js-enumify.git"
+  },
+  "keywords": ["lib", "enum", "js", "enumeration", "javascript", "es6", "type"],
+  "author": "Paweł Galias",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pgalias/js-enumify/issues"
+  },
+  "homepage": "https://github.com/pgalias/js-enumify#readme"
+}
