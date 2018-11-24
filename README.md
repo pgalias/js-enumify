@@ -1,0 +1,2 @@
+[![Build Status](https://travis-ci.com/pgalias/js-enumify.svg?branch=master)](https://travis-ci.com/pgalias/js-enumify)
+[![Coverage Status](https://coveralls.io/repos/github/pgalias/js-enumify/badge.svg)](https://coveralls.io/github/pgalias/js-enumify)
