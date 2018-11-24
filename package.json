@@ -4,6 +4,8 @@
   "description": "Enum lib",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint src/**/*.js",
+    "lint:fix": "eslint src/**/*.js --fix",
     "test": "jest",
     "coverage": "jest --coverage",
     "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
@@ -29,6 +31,9 @@
   "homepage": "https://github.com/pgalias/js-enumify#readme",
   "devDependencies": {
     "coveralls": "^3.0.2",
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
     "jest": "^23.6.0"
   }
 }
