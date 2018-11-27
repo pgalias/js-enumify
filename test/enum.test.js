@@ -23,7 +23,6 @@ describe('Enum class', () => {
         const day = new Days('FRIDAY', 'friday');
         expect(day).toBeInstanceOf(Days);
         expect(day).toBeInstanceOf(Enum);
-        expect(true).toBeFalsy(); // TODO: Its only temporarily, at the beginning all tests should fail
     });
 
     it('should disallow to create instance of extended Enum by constructor when passed key or value are invalid', () => {
@@ -53,7 +52,6 @@ describe('Enum class', () => {
 
     it('should disallow to get one enum item when passed value is incorrect', () => {
         expect(() => Days.take('foobar')).toThrowError();
-        expect(true).toBeFalsy(); // TODO: Its only temporarily, at the beginning all tests should fail
     });
 
     it('returns all keys as array', () => {
