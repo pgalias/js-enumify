@@ -1,10 +1,11 @@
 const { getStaticGetters } = require('./enumHelper');
 const enumValidate = require('./enumValidator');
+const EnumException = require('./enumException');
 
 module.exports = class Enum {
     constructor(key, value) {
         if (this.constructor === Enum) {
-            throw new Error('It\'s abstract class, you should extend it');
+            EnumException.notInitializable();
         }
 
         enumValidate(this.constructor)(key, value);
@@ -15,13 +16,14 @@ module.exports = class Enum {
     }
 
     static all() {
-        return getStaticGetters(this).map(([key, descriptor]) => new this(key, descriptor.get()));
+        return getStaticGetters(this)
+            .map(([key, descriptor]) => new this(key, descriptor.get()));
     }
 
     static take(value) {
         const element = this.all().find(item => item.value === value);
         if (!element) {
-            throw new TypeError('Provided value does not exist in this particular Enum class');
+            EnumException.enumNotFound(value);
         }
 
         return element;
