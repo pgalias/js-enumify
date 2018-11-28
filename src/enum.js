@@ -1,6 +1,5 @@
-const getStaticGetters = scope => Object.getOwnPropertyNames(scope)
-    .map(key => [key, Object.getOwnPropertyDescriptor(scope, key)])
-    .filter(([, descriptor]) => typeof descriptor.get === 'function');
+const { getStaticGetters } = require('./enumHelper');
+const enumValidate = require('./enumValidator');
 
 module.exports = class Enum {
     constructor(key, value) {
@@ -8,16 +7,7 @@ module.exports = class Enum {
             throw new Error('It\'s abstract class, you should extend it');
         }
 
-        const all = getStaticGetters(this.constructor);
-        /* because of conflict with array-bracket-spacing and comma-spacing,
-         * linting next line should be disabled */
-        // eslint-disable-next-line array-bracket-spacing
-        if (!all.find(([enumKey, ]) => enumKey === key)) {
-            throw new Error(`Passed enum key doesn't exist in ${this.constructor}`);
-        }
-        if (!all.find(([, enumValue]) => enumValue.get() === value)) {
-            throw new Error(`Passed enum value doesn't exist in ${this.constructor}`);
-        }
+        enumValidate(this.constructor)(key, value);
 
         this.key = key;
         this.value = value;
