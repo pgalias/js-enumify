@@ -1,14 +1,10 @@
 const { getStaticGetters } = require('./enumHelper');
-const enumValidate = require('./enumValidator');
+const validate = require('./enumValidator');
 const EnumException = require('./enumException');
 
 module.exports = class Enum {
     constructor(key, value) {
-        if (this.constructor === Enum) {
-            EnumException.notInitializable();
-        }
-
-        enumValidate(this.constructor)(key, value);
+        validate(this.constructor)(key, value);
 
         this.key = key;
         this.value = value;
@@ -23,7 +19,7 @@ module.exports = class Enum {
     static take(value) {
         const element = this.all().find(item => item.value === value);
         if (!element) {
-            EnumException.enumNotFound(value);
+            throw EnumException.enumNotFound(value);
         }
 
         return element;
