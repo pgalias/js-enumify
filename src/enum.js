@@ -2,7 +2,7 @@ const { getStaticGetters } = require('./enumHelper');
 const validate = require('./enumValidator');
 const EnumException = require('./enumException');
 
-module.exports = class Enum {
+class Enum {
     constructor(key, value) {
         validate(this.constructor)(key, value);
 
@@ -44,4 +44,6 @@ module.exports = class Enum {
     toString() {
         return this.value;
     }
-};
+}
+
+module.exports = Enum;

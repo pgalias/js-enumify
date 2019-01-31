@@ -1,4 +1,4 @@
-module.exports = class EnumException extends Error {
+class EnumException extends Error {
     constructor(message, code) {
         super(message);
         this.code = code;
@@ -20,4 +20,6 @@ module.exports = class EnumException extends Error {
     static invalidValue(scope, value) {
         return new this(`Passed enum value ${value} doesn't exist in ${scope}`, 'invalid_value');
     }
-};
+}
+
+module.exports = EnumException;
