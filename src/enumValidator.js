@@ -1,8 +1,9 @@
 const { validateEnumKey, validateEnumValue } = require('./enumHelper');
+const Enum = require('./enum');
 const EnumException = require('./enumException');
 
 const enumValidate = (scope) => {
-    if (scope.name === 'Enum') {
+    if (scope === Enum || scope.name === 'Enum') {
         throw EnumException.notInitializable();
     }
 
