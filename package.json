@@ -1,8 +1,8 @@
 {
   "name": "js-enumify",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Enum lib",
-  "main": "index.js",
+  "main": "./src",
   "scripts": {
     "lint": "eslint src/**/*.js",
     "lint:fix": "eslint src/**/*.js --fix",
