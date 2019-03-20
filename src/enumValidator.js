@@ -1,17 +1,17 @@
-const { validateEnumKey, validateEnumValue } = require('./enumHelper');
-const Enum = require('./enum');
-const EnumException = require('./enumException');
+var helper = require('./enumHelper');
+var Enum = require('./enum');
+var EnumException = require('./enumException');
 
-const enumValidate = (scope) => {
+var enumValidate = function(scope) {
     if (scope === Enum || scope.name === 'Enum') {
         throw EnumException.notInitializable();
     }
 
-    return (key, value) => {
-        if (!validateEnumKey(scope, key)) {
+    return function(key, value) {
+        if (!helper.validateEnumKey(scope, key)) {
             throw EnumException.invalidKey(scope, key);
         }
-        if (!validateEnumValue(scope, value)) {
+        if (!helper.validateEnumValue(scope, value)) {
             throw EnumException.invalidValue(scope, value);
         }
     };

@@ -1,20 +1,31 @@
-const getStaticGetters = scope => Object.getOwnPropertyNames(scope)
-    .map(key => [key, Object.getOwnPropertyDescriptor(scope, key)])
-    .filter(([, descriptor]) => typeof descriptor.get === 'function');
+var getStaticGetters = function(scope) {
+    return Object.getOwnPropertyNames(scope)
+        .map(function(key) {
+            return [key, Object.getOwnPropertyDescriptor(scope, key)];
+        })
+        .filter(function(getter) {
+            return typeof getter[1].get === 'function';
+        });
+};
 
-const validateEnumKey = (scope, key) => Boolean(
-    /* because of conflict with array-bracket-spacing and comma-spacing,
-     * linting next line should be disabled */
-    // eslint-disable-next-line array-bracket-spacing
-    getStaticGetters(scope).find(([enumKey, ]) => enumKey === key)
-);
+var validateEnumKey = function(scope, key)  {
+    return Boolean(
+        getStaticGetters(scope).find(function(enumerator) {
+            return enumerator[0] === key;
+        })
+    );
+};
 
-const validateEnumValue = (scope, value) => Boolean(
-    getStaticGetters(scope).find(([, enumValue]) => enumValue.get() === value)
-);
+var validateEnumValue = function(scope, value)  {
+    return Boolean(
+        getStaticGetters(scope).find(function(enumerator) {
+            return enumerator[1].get() === value;
+        })
+    );
+};
 
 module.exports = {
-    getStaticGetters,
-    validateEnumKey,
-    validateEnumValue
+    getStaticGetters: getStaticGetters,
+    validateEnumKey: validateEnumKey,
+    validateEnumValue: validateEnumValue
 };
