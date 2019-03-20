@@ -1,0 +1,12 @@
+{
+  "collectCoverage": true,
+  "collectCoverageFrom": [
+    "src/**/*.js"
+  ],
+  "coveragePathIgnorePatterns": [
+    "/node_modules/",
+    "src/index.js",
+    "src/polyfill.js"
+  ],
+  "coverageDirectory": "coverage"
+}
