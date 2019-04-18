@@ -6,5 +6,8 @@ module.exports = {
             "arrays": "ignore",
         }],
         "func-names": [0],
+        "no-use-before-define": ["error", {
+            "functions": false,
+        }],
     },
 };
