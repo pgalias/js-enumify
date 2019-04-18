@@ -16,6 +16,9 @@ class SomeEnum extends Enum {
     static get FOO() {return 'foo';}
     static get BAR() {return 320;}
     static get BAZ() {return false;}
+    static get ARR() {return ['a', 2, undefined];}
+    static get FUN() {return (a) => a + 1;}
+    static get OBJ() {return {a:1, b:3};}
 }
 ````
 
