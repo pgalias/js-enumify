@@ -1,3 +1,5 @@
+var isEqual = require('./utils/isEqual');
+
 var getStaticGetters = function(scope) {
     return Object.getOwnPropertyNames(scope)
         .map(function(key) {
@@ -11,7 +13,7 @@ var getStaticGetters = function(scope) {
 var validateEnumKey = function(scope, key)  {
     return Boolean(
         getStaticGetters(scope).find(function(enumerator) {
-            return enumerator[0] === key;
+            return isEqual(enumerator[0], key);
         })
     );
 };
@@ -19,7 +21,7 @@ var validateEnumKey = function(scope, key)  {
 var validateEnumValue = function(scope, value)  {
     return Boolean(
         getStaticGetters(scope).find(function(enumerator) {
-            return enumerator[1].get() === value;
+            return isEqual(enumerator[1].get(), value);
         })
     );
 };
