@@ -6,6 +6,7 @@ describe('isEqual function', () => {
         [1, 2, false],
         ['a', 'a', true],
         ['a', 'b', false],
+        [1, '1', false],
         [true, true, true],
         [true, false, false],
         [null, null, true],

@@ -1,18 +1,28 @@
+var specificObjectTypes = [
+    {type: /object Array/, method: checkArray},
+    {type: /object Function/, method: checkFunction},
+    {type: /object Object/, method: checkObject}
+];
+
 function isEqual(value, other) {
     if (!value && !other) {
         return true;
     }
 
-    if (value instanceof Array && other instanceof Array) {
-        return checkArray(value, other);
+    var valueType = Object.prototype.toString.call(value);
+    var otherType = Object.prototype.toString.call(other);
+
+    if (valueType !== otherType) {
+        return false;
     }
 
-    if (value instanceof Function && other instanceof Function) {
-        return checkFunction(value, other);
-    }
+    for (var i = 0; i < specificObjectTypes.length; i++) {
+        var regex = specificObjectTypes[i].type;
+        var method = specificObjectTypes[i].method;
 
-    if (typeof value === 'object' && typeof other === 'object') {
-        return checkObject(value, other);
+        if (regex.test(valueType)) {
+            return method(value, other);
+        }
     }
 
     return value === other;
