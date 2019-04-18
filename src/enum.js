@@ -1,4 +1,4 @@
-require('./polyfill');
+require('./utils/polyfill');
 var helper = require('./enumHelper');
 var validate = require('./enumValidator');
 var EnumException = require('./enumException');
