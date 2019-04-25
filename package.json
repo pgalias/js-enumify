@@ -1,6 +1,6 @@
 {
   "name": "js-enumify",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Enum lib",
   "main": "./src",
   "scripts": {
