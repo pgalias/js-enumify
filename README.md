@@ -70,6 +70,10 @@ foo + ''; // '320'
 
 - `npm test`
 
+## Changelog
+
+See [Changelog](https://github.com/pgalias/js-enumify/blob/master/CHANGELOG.md)
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/pgalias/js-enumify/blob/master/LICENSE) file for details
